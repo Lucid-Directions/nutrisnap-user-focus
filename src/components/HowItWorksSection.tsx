@@ -1,14 +1,12 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, BarChart2, Lightbulb, BookOpen } from "lucide-react";
-import CustomGlucoseChart from "@/components/ui/CustomGlucoseChart";
 
 const HowItWorksSection = () => {
   const [activeStep, setActiveStep] = useState("1");
+  const [glucoseDotPosition, setGlucoseDotPosition] = useState(45);
 
   const steps = [
     {
@@ -57,32 +55,62 @@ const HowItWorksSection = () => {
     }
   ];
 
+  const handleGlucoseCurveClick = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const percentage = (x / rect.width) * 100;
+    setGlucoseDotPosition(Math.max(5, Math.min(95, percentage)));
+  };
+
+  const getGlucoseValue = (position) => {
+    // Simulate glucose curve values based on position
+    const normalizedPos = position / 100;
+    if (normalizedPos < 0.3) return 90 + normalizedPos * 100;
+    if (normalizedPos < 0.6) return 160 - (normalizedPos - 0.3) * 50;
+    return 110 - (normalizedPos - 0.6) * 25;
+  };
+
+  const getTimeLabel = (position) => {
+    const minutes = Math.round((position / 100) * 180);
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+  };
+
   const renderStepContent = (stepId: string) => {
     switch (stepId) {
       case "1":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-grid-slate-100 opacity-50"></div>
-            <div className="w-64 max-w-full relative z-10">
+            <div className="w-72 max-w-full relative z-10">
               <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-16 flex items-center justify-center">
-                      <span className="text-white font-semibold text-lg">Camera</span>
+                      <Camera className="w-6 h-6 text-white mr-2" />
+                      <span className="text-white font-semibold">NutriSnap</span>
                     </div>
-                    <div className="bg-black relative h-96 flex items-center justify-center">
-                      <div className="absolute inset-4 border-2 border-white/30 rounded-lg"></div>
-                      <Camera className="w-16 h-16 text-white/70" />
+                    <div className="flex-1 relative bg-gray-900 flex items-center justify-center">
+                      <div className="absolute inset-4 rounded-lg overflow-hidden">
+                        <img 
+                          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=400&h=600&q=80"
+                          alt="Meal"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 border-2 border-white/30 rounded-lg"></div>
+                        <div className="absolute top-4 right-4 bg-white/90 px-2 py-1 rounded text-xs font-medium">
+                          Focus: ON
+                        </div>
+                      </div>
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <div className="w-16 h-16 rounded-full border-4 border-white bg-white/20 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full border-4 border-white bg-white/20 flex items-center justify-center cursor-pointer">
                           <div className="w-12 h-12 rounded-full bg-white"></div>
                         </div>
                       </div>
                     </div>
-                    <div className="h-20 bg-gray-100 flex items-center justify-around">
-                      <div className="w-8 h-8 bg-gray-300 rounded"></div>
-                      <div className="w-8 h-8 bg-gray-300 rounded"></div>
+                    <div className="h-20 bg-gray-100 flex items-center justify-center">
+                      <span className="text-sm text-gray-600">Tap capture button</span>
                     </div>
                   </div>
                 </div>
@@ -93,34 +121,76 @@ const HowItWorksSection = () => {
       case "2":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-emerald-50 to-green-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-64 max-w-full relative z-10">
+            <div className="w-72 max-w-full relative z-10">
               <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-emerald-500 to-green-500 h-16 flex items-center justify-center">
-                      <span className="text-white font-semibold text-lg">Analysis</span>
+                      <BarChart2 className="w-6 h-6 text-white mr-2" />
+                      <span className="text-white font-semibold">Analysis</span>
                     </div>
-                    <div className="flex-1 bg-white p-4 overflow-y-auto h-96">
-                      <div className="space-y-3">
+                    <div className="flex-1 bg-white p-4 overflow-y-auto">
+                      <div className="space-y-4">
                         <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-                          <div className="text-sm font-semibold text-emerald-800">Chicken Salad</div>
-                          <div className="text-xs text-emerald-600">85% confidence</div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="bg-gray-50 p-2 rounded text-center">
-                            <div className="text-lg font-bold text-emerald-600">420</div>
-                            <div className="text-xs text-gray-600">Calories</div>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-semibold text-emerald-800">Grilled Salmon Bowl</span>
+                            <span className="text-xs bg-emerald-200 px-2 py-1 rounded">92% confident</span>
                           </div>
-                          <div className="bg-gray-50 p-2 rounded text-center">
-                            <div className="text-lg font-bold text-emerald-600">35g</div>
-                            <div className="text-xs text-gray-600">Protein</div>
+                          <div className="grid grid-cols-3 gap-2 text-xs">
+                            <div className="text-center">
+                              <div className="font-bold text-lg text-emerald-600">385</div>
+                              <div className="text-gray-600">Calories</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="font-bold text-lg text-blue-600">28g</div>
+                              <div className="text-gray-600">Protein</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="font-bold text-lg text-orange-600">12g</div>
+                              <div className="text-gray-600">Fat</div>
+                            </div>
                           </div>
                         </div>
-                        <div className="flex space-x-2">
-                          <div className="flex-1 h-2 bg-emerald-200 rounded"></div>
-                          <div className="flex-1 h-2 bg-blue-200 rounded"></div>
-                          <div className="flex-1 h-2 bg-amber-200 rounded"></div>
+                        
+                        <div className="space-y-2">
+                          <h4 className="font-semibold text-sm">Detected Ingredients:</h4>
+                          <div className="flex flex-wrap gap-1">
+                            {["Salmon", "Avocado", "Brown Rice", "Edamame", "Cucumber", "Carrots"].map((ingredient) => (
+                              <span key={ingredient} className="bg-gray-100 px-2 py-1 rounded text-xs">{ingredient}</span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <h4 className="font-semibold text-sm">Macronutrients:</h4>
+                          <div className="space-y-1">
+                            <div className="flex justify-between">
+                              <span className="text-xs">Carbs</span>
+                              <span className="text-xs font-semibold">32g</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div className="bg-orange-400 h-2 rounded-full" style={{ width: "35%" }}></div>
+                            </div>
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex justify-between">
+                              <span className="text-xs">Protein</span>
+                              <span className="text-xs font-semibold">28g</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div className="bg-blue-400 h-2 rounded-full" style={{ width: "60%" }}></div>
+                            </div>
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex justify-between">
+                              <span className="text-xs">Fat</span>
+                              <span className="text-xs font-semibold">12g</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div className="bg-green-400 h-2 rounded-full" style={{ width: "25%" }}></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -133,31 +203,95 @@ const HowItWorksSection = () => {
       case "3":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-64 max-w-full relative z-10">
+            <div className="w-72 max-w-full relative z-10">
               <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
-                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-16 flex items-center justify-center">
-                      <span className="text-white font-semibold text-lg">Glucose Impact</span>
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-16 flex items-center justify-between px-4">
+                      <div className="flex items-center">
+                        <Lightbulb className="w-6 h-6 text-white mr-2" />
+                        <span className="text-white font-semibold">Glucose Impact</span>
+                      </div>
+                      <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">HIGH</span>
                     </div>
-                    <div className="flex-1 bg-white p-4 h-96">
-                      <div className="space-y-3">
+                    <div className="flex-1 bg-white p-4">
+                      <div className="space-y-4">
                         <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
-                          <CustomGlucoseChart />
-                        </div>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="bg-red-50 p-2 rounded text-center border border-red-200">
-                            <div className="text-sm font-bold text-red-600">Peak</div>
-                            <div className="text-xs text-red-600">165 mg/dL</div>
+                          <div className="relative h-32 mb-2">
+                            <svg 
+                              viewBox="0 0 300 120" 
+                              className="w-full h-full cursor-pointer"
+                              onClick={handleGlucoseCurveClick}
+                            >
+                              {/* Grid lines */}
+                              <defs>
+                                <pattern id="grid" width="30" height="20" patternUnits="userSpaceOnUse">
+                                  <path d="M 30 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" strokeWidth="1"/>
+                                </pattern>
+                              </defs>
+                              <rect width="100%" height="100%" fill="url(#grid)" />
+                              
+                              {/* Y-axis labels */}
+                              <text x="15" y="20" fontSize="8" fill="#666" textAnchor="start">180</text>
+                              <text x="15" y="40" fontSize="8" fill="#666" textAnchor="start">150</text>
+                              <text x="15" y="60" fontSize="8" fill="#666" textAnchor="start">120</text>
+                              <text x="15" y="80" fontSize="8" fill="#666" textAnchor="start">90</text>
+                              
+                              {/* Normal range area */}
+                              <path
+                                d="M 25 70 L 290 70 L 290 85 L 25 85 Z"
+                                fill="#22c55e"
+                                fillOpacity="0.1"
+                              />
+                              
+                              {/* Glucose curve */}
+                              <path
+                                d="M 25 85 Q 80 85 120 35 Q 160 25 200 45 Q 240 55 280 75"
+                                fill="none"
+                                stroke="#ef4444"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                              />
+                              
+                              {/* Interactive dot */}
+                              <circle 
+                                cx={25 + (glucoseDotPosition / 100) * 255} 
+                                cy={85 - (getGlucoseValue(glucoseDotPosition) - 80) * 0.8} 
+                                r="6" 
+                                fill="#ef4444" 
+                                stroke="white"
+                                strokeWidth="2"
+                                className="cursor-pointer"
+                              />
+                              
+                              {/* Time labels */}
+                              <text x="25" y="110" fontSize="8" fill="#666" textAnchor="middle">0</text>
+                              <text x="100" y="110" fontSize="8" fill="#666" textAnchor="middle">1h</text>
+                              <text x="200" y="110" fontSize="8" fill="#666" textAnchor="middle">2h</text>
+                              <text x="280" y="110" fontSize="8" fill="#666" textAnchor="middle">3h</text>
+                            </svg>
                           </div>
-                          <div className="bg-green-50 p-2 rounded text-center border border-green-200">
-                            <div className="text-sm font-bold text-green-600">Time</div>
-                            <div className="text-xs text-green-600">45 min</div>
+                          
+                          <div className="grid grid-cols-3 gap-2 text-xs">
+                            <div className="bg-red-50 p-2 rounded text-center border border-red-200">
+                              <div className="font-bold text-red-600">{Math.round(getGlucoseValue(glucoseDotPosition))}</div>
+                              <div className="text-red-600">mg/dL</div>
+                            </div>
+                            <div className="bg-blue-50 p-2 rounded text-center border border-blue-200">
+                              <div className="font-bold text-blue-600">{getTimeLabel(glucoseDotPosition)}</div>
+                              <div className="text-blue-600">Time</div>
+                            </div>
+                            <div className="bg-orange-50 p-2 rounded text-center border border-orange-200">
+                              <div className="font-bold text-orange-600">165</div>
+                              <div className="text-orange-600">Peak</div>
+                            </div>
                           </div>
                         </div>
+                        
                         <div className="bg-amber-100 p-2 rounded border border-amber-200">
-                          <div className="text-xs text-amber-800">Moderate glucose response. Consider adding protein.</div>
+                          <div className="text-xs text-amber-800 font-medium">💡 Insight:</div>
+                          <div className="text-xs text-amber-700">High glucose spike detected. Try adding more protein or fiber to slow absorption.</div>
                         </div>
                       </div>
                     </div>
@@ -170,30 +304,74 @@ const HowItWorksSection = () => {
       case "4":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-64 max-w-full relative z-10">
+            <div className="w-72 max-w-full relative z-10">
               <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
-                    <div className="bg-gradient-to-r from-purple-500 to-violet-500 h-16 flex items-center justify-center">
-                      <span className="text-white font-semibold text-lg">Knowledge Hub</span>
+                    <div className="bg-gradient-to-r from-purple-500 to-violet-500 h-16 flex items-center justify-between px-4">
+                      <div className="flex items-center">
+                        <BookOpen className="w-6 h-6 text-white mr-2" />
+                        <span className="text-white font-semibold">NutriSnap</span>
+                      </div>
+                      <span className="text-white text-xs">Knowledge Base</span>
                     </div>
-                    <div className="flex-1 bg-white p-4 overflow-y-auto h-96">
-                      <div className="space-y-3">
+                    <div className="flex-1 bg-white">
+                      <div className="bg-green-600 text-white p-3 text-center">
+                        <h3 className="font-bold">Metabolic Health Library</h3>
+                        <p className="text-xs opacity-90">Learn about nutritional science</p>
+                      </div>
+                      
+                      <div className="p-4 space-y-3">
+                        <div className="relative">
+                          <input 
+                            type="text" 
+                            placeholder="Search articles..." 
+                            className="w-full p-2 pr-8 border rounded-lg text-xs"
+                          />
+                          <div className="absolute right-2 top-2">🔍</div>
+                        </div>
+                        
                         <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
-                          <div className="text-sm font-semibold text-purple-800">Understanding Glucose</div>
-                          <div className="text-xs text-purple-600">5 min read</div>
+                          <div className="text-sm font-semibold text-purple-800 mb-1">Featured Article</div>
+                          <div className="text-xs font-medium mb-1">Understanding Glucose Spikes</div>
+                          <div className="text-xs text-gray-600 mb-2">Learn how different foods affect your blood sugar and what it means for your energy levels.</div>
+                          <div className="text-xs text-green-600 font-medium">Read Now →</div>
                         </div>
-                        <div className="bg-violet-50 p-3 rounded-lg border border-violet-200">
-                          <div className="text-sm font-semibold text-violet-800">Metabolic Health</div>
-                          <div className="text-xs text-violet-600">8 min read</div>
+                        
+                        <div className="space-y-2">
+                          <div className="text-sm font-semibold">Browse by Topic</div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <div className="bg-blue-50 p-2 rounded text-center">
+                              <div className="text-lg">😊</div>
+                              <div className="text-xs font-medium">Metabolic Health</div>
+                            </div>
+                            <div className="bg-green-50 p-2 rounded text-center">
+                              <div className="text-lg">🥗</div>
+                              <div className="text-xs font-medium">Nutrition Science</div>
+                            </div>
+                            <div className="bg-purple-50 p-2 rounded text-center">
+                              <div className="text-lg">🏃</div>
+                              <div className="text-xs font-medium">Exercise Impact</div>
+                            </div>
+                            <div className="bg-yellow-50 p-2 rounded text-center">
+                              <div className="text-lg">😴</div>
+                              <div className="text-xs font-medium">Stress & Sleep</div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-200">
-                          <div className="text-sm font-semibold text-indigo-800">Food Combinations</div>
-                          <div className="text-xs text-indigo-600">6 min read</div>
-                        </div>
-                        <div className="flex justify-center">
-                          <BookOpen className="w-8 h-8 text-purple-400" />
+                        
+                        <div className="space-y-2">
+                          <div className="text-sm font-semibold">Recent Articles</div>
+                          <div className="space-y-2">
+                            <div className="flex items-center space-x-2">
+                              <div className="w-8 h-8 bg-green-100 rounded flex items-center justify-center text-xs">📊</div>
+                              <div className="flex-1">
+                                <div className="text-xs font-medium">The Truth About Carbs</div>
+                                <div className="text-xs text-gray-500">5 min read</div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
