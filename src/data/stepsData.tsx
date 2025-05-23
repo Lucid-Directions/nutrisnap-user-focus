@@ -5,7 +5,7 @@ import React from "react";
 
 // Import step visualization components
 import SnapOrUploadStep from "@/components/step-visuals/SnapOrUploadStep";
-import InstantAnalysisStep from "@/components/step-visuals/InstantAnalysisStep";
+import MetabolicResponseStep from "@/components/step-visuals/MetabolicResponseStep";
 import PersonalizedInsightsStep from "@/components/step-visuals/PersonalizedInsightsStep";
 import LearnAndImproveStep from "@/components/step-visuals/LearnAndImproveStep";
 
@@ -32,7 +32,7 @@ export const getSteps = (): Step[] => [
     title: "Instant Analysis",
     description: "Our advanced AI instantly identifies ingredients, portion sizes, and nutritional composition, providing a comprehensive breakdown of your meal's nutrients.",
     icon: BarChart2,
-    imagePlaceholder: InstantAnalysisStep,
+    imagePlaceholder: MetabolicResponseStep,
     tabTitle: "Analyze"
   },
   {
