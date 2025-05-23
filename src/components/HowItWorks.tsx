@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { steps } from "@/data/stepsData";
+import { getSteps } from "@/data/stepsData";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -22,6 +22,7 @@ const stepComponents = {
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState("1");
+  const steps = getSteps(); // Call the getSteps function to get the steps array
 
   return (
     <section id="how-it-works" className="py-20 bg-green-50">
@@ -59,7 +60,7 @@ const HowItWorks = () => {
                         "flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center",
                         isActive ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-600"
                       )}>
-                        <span className="text-lg font-semibold">{step.id}</span>
+                        <span className="text-lg font-semibold">{step.id.replace('step', '')}</span>
                       </div>
                       <div>
                         <h3 className={cn(
@@ -86,7 +87,7 @@ const HowItWorks = () => {
             >
               <TabsList className="grid grid-cols-4 mb-6">
                 {steps.map((step) => {
-                  const StepIcon = step.icon;
+                  const StepIcon = step.icon as React.ComponentType<{ className?: string }>;
                   return (
                     <TabsTrigger 
                       key={step.id} 
@@ -100,7 +101,7 @@ const HowItWorks = () => {
                 })}
               </TabsList>
               {steps.map((step) => {
-                const StepComponent = stepComponents[step.id as keyof typeof stepComponents];
+                const StepComponent = stepComponents[parseInt(step.id.replace('step', '')) as keyof typeof stepComponents];
                 return (
                   <TabsContent 
                     key={step.id} 
