@@ -112,7 +112,6 @@ const HowItWorks = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {/* Remove the className prop here as it's causing a TypeScript error */}
                       <StepComponent />
                     </motion.div>
                   </TabsContent>
