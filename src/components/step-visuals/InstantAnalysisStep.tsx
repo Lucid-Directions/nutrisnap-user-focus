@@ -23,36 +23,67 @@ const InstantAnalysisStep = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="h-6 flex items-center">
-                        <div className="w-16 h-4 bg-gray-200 rounded mr-2"></div>
-                        <div className="w-12 h-4 bg-primary/20 rounded"></div>
+                    <div className="bg-emerald-50 p-2 rounded-lg border border-emerald-200 mb-2">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold text-emerald-800 text-sm">Spaghetti Marinara</span>
+                        <span className="text-xs bg-emerald-200 px-1 py-0.5 rounded">95% confident</span>
                       </div>
-                      <div className="h-6 flex items-center">
-                        <div className="w-16 h-4 bg-gray-200 rounded mr-2"></div>
-                        <div className="w-12 h-4 bg-blue-500/20 rounded"></div>
-                      </div>
-                      <div className="h-6 flex items-center">
-                        <div className="w-16 h-4 bg-gray-200 rounded mr-2"></div>
-                        <div className="w-12 h-4 bg-orange-500/20 rounded"></div>
-                      </div>
-                      <div className="h-6 flex items-center">
-                        <div className="w-16 h-4 bg-gray-200 rounded mr-2"></div>
-                        <div className="w-12 h-4 bg-green-500/20 rounded"></div>
+                      <div className="grid grid-cols-4 gap-1 text-xs">
+                        <div className="text-center">
+                          <div className="font-bold text-sm text-emerald-600">520</div>
+                          <div className="text-gray-600 text-xs">Calories</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-bold text-sm text-orange-600">92g</div>
+                          <div className="text-gray-600 text-xs">Carbs</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-bold text-sm text-blue-600">18g</div>
+                          <div className="text-gray-600 text-xs">Protein</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-bold text-sm text-green-600">8g</div>
+                          <div className="text-gray-600 text-xs">Fat</div>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline" className="bg-primary/10">Chicken</Badge>
-                      <Badge variant="outline" className="bg-primary/10">Brown Rice</Badge>
-                      <Badge variant="outline" className="bg-primary/10">Broccoli</Badge>
-                      <Badge variant="outline" className="bg-primary/10">Olive Oil</Badge>
+                    <div className="flex flex-wrap gap-1">
+                      <Badge variant="outline" className="bg-primary/10 text-xs">Spaghetti</Badge>
+                      <Badge variant="outline" className="bg-primary/10 text-xs">Tomatoes</Badge>
+                      <Badge variant="outline" className="bg-primary/10 text-xs">Basil</Badge>
+                      <Badge variant="outline" className="bg-primary/10 text-xs">Garlic</Badge>
                     </div>
-                    <div className="space-y-1 mt-3">
-                      <div className="h-3 bg-gray-200 rounded w-full"></div>
-                      <div className="h-3 bg-gray-200 rounded w-4/5"></div>
-                      <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                    <div className="space-y-1">
+                      <div className="text-xs font-semibold text-gray-700">Macronutrients:</div>
+                      <div className="space-y-0.5">
+                        <div className="flex justify-between text-xs">
+                          <span>Carbs</span>
+                          <span className="font-semibold">92g</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5">
+                          <div className="bg-orange-400 h-1.5 rounded-full" style={{ width: "75%" }}></div>
+                        </div>
+                      </div>
+                      <div className="space-y-0.5">
+                        <div className="flex justify-between text-xs">
+                          <span>Protein</span>
+                          <span className="font-semibold">18g</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5">
+                          <div className="bg-blue-400 h-1.5 rounded-full" style={{ width: "35%" }}></div>
+                        </div>
+                      </div>
+                      <div className="space-y-0.5">
+                        <div className="flex justify-between text-xs">
+                          <span>Fat</span>
+                          <span className="font-semibold">8g</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5">
+                          <div className="bg-green-400 h-1.5 rounded-full" style={{ width: "15%" }}></div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="mt-3 bg-gradient-to-r from-blue-50 to-indigo-50 p-2 rounded-lg border">
+                    <div className="mt-2 bg-gradient-to-r from-blue-50 to-indigo-50 p-2 rounded-lg border">
                       <div className="text-xs font-semibold text-gray-700 mb-1">Glucose Impact Preview</div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
@@ -61,16 +92,16 @@ const InstantAnalysisStep = () => {
                         </div>
                         <div className="text-xs text-amber-600 font-medium">High Impact</div>
                       </div>
-                      <div className="mt-1 h-8 bg-white rounded border relative overflow-hidden">
-                        <svg viewBox="0 0 100 30" className="w-full h-full">
+                      <div className="mt-1 h-6 bg-white rounded border relative overflow-hidden">
+                        <svg viewBox="0 0 100 24" className="w-full h-full">
                           <polyline
-                            points="5,25 15,23 25,18 35,12 45,8 55,15 65,20 75,22 85,24 95,25"
+                            points="5,20 15,18 25,14 35,9 45,6 55,11 65,15 75,17 85,19 95,20"
                             fill="none"
                             stroke="#ef4444"
                             strokeWidth="1.5"
                             strokeLinecap="round"
                           />
-                          <circle cx="45" cy="8" r="1.5" fill="#ef4444" />
+                          <circle cx="45" cy="6" r="1.5" fill="#ef4444" />
                         </svg>
                       </div>
                     </div>

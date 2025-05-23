@@ -12,7 +12,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/949b72b4-14b9-49b5-b561-f617cf276e83.png" 
             alt="NutriSnap Logo" 
-            className="h-16 w-auto" // Changed from h-12 to h-16
+            className="h-20 w-auto" // Changed from h-16 to h-20
           />
         </div>
 
