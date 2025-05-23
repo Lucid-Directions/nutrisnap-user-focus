@@ -8,7 +8,7 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/949b72b4-14b9-49b5-b561-f617cf276e83.png" 
               alt="NutriSnap Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto" // Changed from h-10 to h-12 for consistency
             />
             <p className="text-gray-500 mt-2">Revolutionizing metabolic health, one snap at a time.</p>
           </div>
