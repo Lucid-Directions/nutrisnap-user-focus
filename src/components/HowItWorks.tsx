@@ -28,7 +28,7 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            How NutriSnap Works
+            First Look at NutriSnap
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Experience the simplicity and power of NutriSnap's AI-driven approach to
@@ -41,7 +41,6 @@ const HowItWorks = () => {
           <div className="space-y-4">
             {steps.map((step) => {
               const isActive = activeStep === step.id.toString();
-              const StepIcon = step.icon;
               
               return (
                 <Card 
@@ -113,6 +112,7 @@ const HowItWorks = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
                     >
+                      {/* Remove the className prop here as it's causing a TypeScript error */}
                       <StepComponent />
                     </motion.div>
                   </TabsContent>
