@@ -14,14 +14,78 @@ const InstantAnalysisStep = () => {
               </div>
               <div className="h-full bg-white p-3 flex flex-col">
                 <div className="text-center mb-2">
-                  <h4 className="font-semibold text-gray-800">Analyzing meal...</h4>
+                  <h4 className="font-semibold text-gray-800">Metabolic Response</h4>
                 </div>
                 <div className="flex-1 flex flex-col">
-                  <div className="h-40 bg-gray-100 rounded-lg mb-3 relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                  <div className="h-40 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg mb-3 p-2 border border-blue-200">
+                    <div className="text-xs font-semibold text-blue-800 mb-1 flex items-center justify-between">
+                      <span className="flex items-center">
+                        <span className="text-blue-600 mr-1">📊</span>
+                        Glucose Response Curve
+                      </span>
+                      <span className="text-xs bg-blue-100 px-1 py-0.5 rounded">Live</span>
+                    </div>
+                    <div className="h-24 bg-white rounded border relative overflow-hidden">
+                      <svg viewBox="0 0 120 60" className="w-full h-full">
+                        {/* Grid background */}
+                        <defs>
+                          <pattern id="grid" width="12" height="6" patternUnits="userSpaceOnUse">
+                            <path d="M 12 0 L 0 0 0 6" fill="none" stroke="#e5e7eb" strokeWidth="0.5"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                        
+                        {/* Y-axis labels */}
+                        <text x="8" y="12" fontSize="4" fill="#6b7280">180</text>
+                        <text x="8" y="24" fontSize="4" fill="#6b7280">140</text>
+                        <text x="8" y="36" fontSize="4" fill="#6b7280">100</text>
+                        <text x="8" y="48" fontSize="4" fill="#6b7280">80</text>
+                        
+                        {/* Normal range zone */}
+                        <rect x="12" y="30" width="100" height="12" fill="#10b981" fillOpacity="0.1" />
+                        <text x="115" y="38" fontSize="3" fill="#10b981" textAnchor="end">Normal</text>
+                        
+                        {/* Glucose curve - realistic meal response */}
+                        <path
+                          d="M12,45 Q20,44 30,38 Q40,28 50,22 Q60,20 70,25 Q80,32 90,38 Q100,42 108,44"
+                          fill="none"
+                          stroke="#3b82f6"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        
+                        {/* Peak marker */}
+                        <circle cx="50" cy="22" r="2" fill="#ef4444" />
+                        <text x="50" y="18" fontSize="3" fill="#ef4444" textAnchor="middle">Peak</text>
+                        
+                        {/* Current point (animated) */}
+                        <circle cx="70" cy="25" r="1.5" fill="#3b82f6">
+                          <animate attributeName="r" values="1.5;2.5;1.5" dur="2s" repeatCount="indefinite"/>
+                          <animate attributeName="fill-opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        {/* Time markers */}
+                        <line x1="24" y1="54" x2="24" y2="52" stroke="#9ca3af" strokeWidth="0.5" />
+                        <line x1="48" y1="54" x2="48" y2="52" stroke="#9ca3af" strokeWidth="0.5" />
+                        <line x1="72" y1="54" x2="72" y2="52" stroke="#9ca3af" strokeWidth="0.5" />
+                        <line x1="96" y1="54" x2="96" y2="52" stroke="#9ca3af" strokeWidth="0.5" />
+                      </svg>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-1">
+                      <span>0h</span>
+                      <span>1h</span>
+                      <span>2h</span>
+                      <span>3h</span>
+                    </div>
+                    <div className="mt-1 flex items-center justify-between">
+                      <div className="text-xs text-blue-700 flex items-center">
+                        <span className="mr-1">💡</span>
+                        <span>Interactive tracking</span>
+                      </div>
+                      <div className="text-xs text-green-600 font-medium">In range: 85%</div>
                     </div>
                   </div>
+                  
                   <div className="space-y-2">
                     <div className="bg-emerald-50 p-2 rounded-lg border border-emerald-200 mb-2">
                       <div className="flex items-center justify-between mb-1">
@@ -83,61 +147,6 @@ const InstantAnalysisStep = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-2 bg-gradient-to-r from-purple-50 to-indigo-50 p-2 rounded-lg border border-purple-200">
-                      <div className="text-xs font-semibold text-purple-800 mb-1 flex items-center">
-                        <span className="text-purple-600 mr-1">🧬</span>
-                        Glucose Response Prediction
-                      </div>
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-red-500 mr-1"></div>
-                          <div className="text-xs text-gray-600">Peak: 165 mg/dL</div>
-                        </div>
-                        <div className="text-xs text-purple-600 font-medium bg-purple-100 px-1 py-0.5 rounded">Premium</div>
-                      </div>
-                      <div className="mt-1 h-8 bg-white rounded border relative overflow-hidden">
-                        <svg viewBox="0 0 100 24" className="w-full h-full">
-                          {/* Grid background */}
-                          <defs>
-                            <pattern id="smallGrid" width="10" height="4" patternUnits="userSpaceOnUse">
-                              <path d="M 10 0 L 0 0 0 4" fill="none" stroke="#f3f4f6" strokeWidth="0.3"/>
-                            </pattern>
-                          </defs>
-                          <rect width="100%" height="100%" fill="url(#smallGrid)" />
-                          
-                          {/* Normal range */}
-                          <rect x="0" y="15" width="100" height="6" fill="#10b981" fillOpacity="0.1" />
-                          
-                          {/* Glucose curve with realistic shape */}
-                          <polyline
-                            points="5,20 15,19 25,17 35,12 45,8 55,10 65,13 75,16 85,18 95,19"
-                            fill="none"
-                            stroke="#dc2626"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                          
-                          {/* Peak indicator */}
-                          <circle cx="45" cy="8" r="1.5" fill="#dc2626" />
-                          <circle cx="45" cy="8" r="3" fill="none" stroke="#dc2626" strokeWidth="0.5" opacity="0.5" />
-                          
-                          {/* Time markers */}
-                          <line x1="25" y1="23" x2="25" y2="21" stroke="#9ca3af" strokeWidth="0.5" />
-                          <line x1="50" y1="23" x2="50" y2="21" stroke="#9ca3af" strokeWidth="0.5" />
-                          <line x1="75" y1="23" x2="75" y2="21" stroke="#9ca3af" strokeWidth="0.5" />
-                        </svg>
-                      </div>
-                      <div className="flex justify-between text-xs text-gray-500 mt-0.5">
-                        <span>0h</span>
-                        <span>1h</span>
-                        <span>2h</span>
-                        <span>3h</span>
-                      </div>
-                      <div className="text-xs text-purple-700 mt-1 flex items-center">
-                        <span className="mr-1">💡</span>
-                        <span>High carb impact - consider protein pairing</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -145,8 +154,8 @@ const InstantAnalysisStep = () => {
           </div>
           {/* Gradient overlay */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-            <h4 className="text-white font-semibold">Instant Analysis</h4>
-            <p className="text-white/90 text-sm">AI identifies ingredients & glucose impact</p>
+            <h4 className="text-white font-semibold">Visualize Your Metabolic Response</h4>
+            <p className="text-white/90 text-sm">Track how meals affect your glucose levels with interactive curves</p>
           </div>
         </AspectRatio>
       </div>
