@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -99,9 +98,9 @@ const HowItWorksSection = () => {
   };
 
   const getGlucoseStatus = (glucose) => {
-    if (glucose < 100) return { status: "Normal", color: "text-green-600" };
-    if (glucose < 140) return { status: "Elevated", color: "text-yellow-600" };
-    return { status: "High", color: "text-red-600" };
+    if (glucose < 100) return { status: "Normal", color: "text-green-600", bgColor: "bg-green-50", borderColor: "border-green-200" };
+    if (glucose < 140) return { status: "Elevated", color: "text-amber-600", bgColor: "bg-amber-50", borderColor: "border-amber-200" };
+    return { status: "High", color: "text-red-600", bgColor: "bg-red-50", borderColor: "border-red-200" };
   };
 
   const renderStepContent = (stepId: string) => {
@@ -122,7 +121,7 @@ const HowItWorksSection = () => {
                       <div className="absolute inset-4 rounded-lg overflow-hidden">
                         <img 
                           src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?auto=format&fit=crop&w=400&h=600&q=80"
-                          alt="Pasta meal"
+                          alt="Spaghetti marinara meal"
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 border-2 border-white/30 rounded-lg"></div>
@@ -131,7 +130,7 @@ const HowItWorksSection = () => {
                         </div>
                       </div>
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <div className="w-16 h-16 rounded-full border-4 border-white bg-white/20 flex items-center justify-center cursor-pointer">
+                        <div className="w-16 h-16 rounded-full border-4 border-white bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
                           <div className="w-12 h-12 rounded-full bg-white"></div>
                         </div>
                       </div>
@@ -260,104 +259,138 @@ const HowItWorksSection = () => {
                 <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
-                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-16 flex items-center justify-between px-4">
+                    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 h-16 flex items-center justify-between px-4">
                       <div className="flex items-center">
                         <Lightbulb className="w-6 h-6 text-white mr-2" />
                         <span className="text-white font-semibold">Glucose Impact</span>
                       </div>
-                      <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">HIGH</span>
+                      <div className={`px-2 py-1 rounded text-xs font-bold text-white ${
+                        currentGlucose >= 140 ? 'bg-red-500' : currentGlucose >= 100 ? 'bg-amber-500' : 'bg-green-500'
+                      }`}>
+                        {glucoseStatus.status.toUpperCase()}
+                      </div>
                     </div>
                     <div className="flex-1 bg-white p-4">
                       <div className="space-y-4">
-                        <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
-                          <div className="relative h-32 mb-2">
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-200 shadow-sm">
+                          <h4 className="text-sm font-semibold text-gray-800 mb-3">Blood Glucose Response</h4>
+                          <div className="relative h-40 mb-3 bg-white rounded-lg border border-gray-200 p-2">
                             <svg 
-                              viewBox="0 0 300 120" 
+                              viewBox="0 0 320 140" 
                               className="w-full h-full cursor-crosshair"
                               onClick={handleGlucoseCurveClick}
                             >
-                              {/* Grid lines */}
+                              {/* Professional grid */}
                               <defs>
-                                <pattern id="grid" width="30" height="20" patternUnits="userSpaceOnUse">
-                                  <path d="M 30 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" strokeWidth="1"/>
+                                <pattern id="grid" width="32" height="14" patternUnits="userSpaceOnUse">
+                                  <path d="M 32 0 L 0 0 0 14" fill="none" stroke="#f3f4f6" strokeWidth="0.5"/>
                                 </pattern>
+                                <linearGradient id="normalZone" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.1"/>
+                                  <stop offset="100%" stopColor="#10b981" stopOpacity="0.05"/>
+                                </linearGradient>
                               </defs>
                               <rect width="100%" height="100%" fill="url(#grid)" />
                               
-                              {/* Y-axis labels */}
-                              <text x="15" y="15" fontSize="8" fill="#666" textAnchor="start">180</text>
-                              <text x="15" y="35" fontSize="8" fill="#666" textAnchor="start">150</text>
-                              <text x="15" y="55" fontSize="8" fill="#666" textAnchor="start">120</text>
-                              <text x="15" y="75" fontSize="8" fill="#666" textAnchor="start">90</text>
-                              <text x="15" y="95" fontSize="8" fill="#666" textAnchor="start">70</text>
+                              {/* Y-axis */}
+                              <line x1="30" y1="10" x2="30" y2="120" stroke="#d1d5db" strokeWidth="1"/>
+                              {/* X-axis */}
+                              <line x1="30" y1="120" x2="310" y2="120" stroke="#d1d5db" strokeWidth="1"/>
                               
-                              {/* Normal range area (70-140 mg/dL) */}
+                              {/* Y-axis labels with better positioning */}
+                              <text x="25" y="15" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">180</text>
+                              <text x="25" y="35" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">150</text>
+                              <text x="25" y="55" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">120</text>
+                              <text x="25" y="75" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">100</text>
+                              <text x="25" y="95" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">80</text>
+                              <text x="25" y="115" fontSize="9" fill="#6b7280" textAnchor="end" fontFamily="system-ui">70</text>
+                              
+                              {/* Normal range area (70-140 mg/dL) - more professional styling */}
                               <path
-                                d="M 25 95 L 290 95 L 290 60 L 25 60 Z"
-                                fill="#22c55e"
-                                fillOpacity="0.1"
+                                d="M 30 115 L 310 115 L 310 62 L 30 62 Z"
+                                fill="url(#normalZone)"
+                                stroke="#10b981"
+                                strokeWidth="0.5"
+                                strokeDasharray="2,2"
+                                opacity="0.7"
                               />
                               
-                              {/* Generate realistic glucose curve */}
+                              {/* Target range label */}
+                              <text x="280" y="88" fontSize="8" fill="#10b981" textAnchor="end" fontWeight="500">Normal Range</text>
+                              <text x="280" y="98" fontSize="7" fill="#10b981" textAnchor="end">70-140 mg/dL</text>
+                              
+                              {/* Generate realistic glucose curve with smooth path */}
                               {(() => {
                                 const points = [];
-                                for (let i = 0; i <= 100; i += 2) {
+                                for (let i = 0; i <= 100; i += 1) {
                                   const glucose = getGlucoseValue(i);
-                                  const x = 25 + (i / 100) * 265;
-                                  const y = 95 - ((glucose - 70) / 110) * 80; // Scale to fit 70-180 range
+                                  const x = 30 + (i / 100) * 280;
+                                  const y = 115 - ((glucose - 70) / 110) * 105; // Scale to fit 70-180 range
                                   points.push(`${x},${y}`);
                                 }
                                 return (
                                   <polyline
                                     points={points.join(' ')}
                                     fill="none"
-                                    stroke="#ef4444"
-                                    strokeWidth="3"
+                                    stroke="#dc2626"
+                                    strokeWidth="2.5"
                                     strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    filter="drop-shadow(0 1px 2px rgba(0,0,0,0.1))"
                                   />
                                 );
                               })()}
                               
-                              {/* Interactive dot */}
+                              {/* Interactive dot with better styling */}
                               <circle 
-                                cx={25 + (glucoseDotPosition / 100) * 265} 
-                                cy={95 - ((currentGlucose - 70) / 110) * 80} 
-                                r="6" 
-                                fill="#ef4444" 
+                                cx={30 + (glucoseDotPosition / 100) * 280} 
+                                cy={115 - ((currentGlucose - 70) / 110) * 105} 
+                                r="5" 
+                                fill="#dc2626" 
                                 stroke="white"
                                 strokeWidth="2"
                                 className="cursor-pointer drop-shadow-lg"
+                                filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"
                               />
                               
                               {/* Time labels */}
-                              <text x="25" y="110" fontSize="8" fill="#666" textAnchor="middle">0</text>
-                              <text x="100" y="110" fontSize="8" fill="#666" textAnchor="middle">1h</text>
-                              <text x="175" y="110" fontSize="8" fill="#666" textAnchor="middle">2h</text>
-                              <text x="250" y="110" fontSize="8" fill="#666" textAnchor="middle">3h</text>
+                              <text x="30" y="133" fontSize="8" fill="#6b7280" textAnchor="middle">0</text>
+                              <text x="100" y="133" fontSize="8" fill="#6b7280" textAnchor="middle">1h</text>
+                              <text x="170" y="133" fontSize="8" fill="#6b7280" textAnchor="middle">2h</text>
+                              <text x="240" y="133" fontSize="8" fill="#6b7280" textAnchor="middle">3h</text>
+                              <text x="310" y="133" fontSize="8" fill="#6b7280" textAnchor="middle">4h</text>
                             </svg>
                           </div>
                           
                           <div className="grid grid-cols-3 gap-2 text-xs">
-                            <div className="bg-red-50 p-2 rounded text-center border border-red-200">
-                              <div className={`font-bold ${glucoseStatus.color}`}>{currentGlucose}</div>
+                            <div className={`${glucoseStatus.bgColor} p-2 rounded-lg text-center border ${glucoseStatus.borderColor}`}>
+                              <div className={`font-bold text-lg ${glucoseStatus.color}`}>{currentGlucose}</div>
                               <div className={glucoseStatus.color}>mg/dL</div>
                               <div className="text-xs text-gray-500">{glucoseStatus.status}</div>
                             </div>
-                            <div className="bg-blue-50 p-2 rounded text-center border border-blue-200">
-                              <div className="font-bold text-blue-600">{getTimeLabel(glucoseDotPosition)}</div>
+                            <div className="bg-blue-50 p-2 rounded-lg text-center border border-blue-200">
+                              <div className="font-bold text-lg text-blue-600">{getTimeLabel(glucoseDotPosition)}</div>
                               <div className="text-blue-600">Time</div>
+                              <div className="text-xs text-gray-500">from meal</div>
                             </div>
-                            <div className="bg-orange-50 p-2 rounded text-center border border-orange-200">
-                              <div className="font-bold text-orange-600">165</div>
+                            <div className="bg-orange-50 p-2 rounded-lg text-center border border-orange-200">
+                              <div className="font-bold text-lg text-orange-600">165</div>
                               <div className="text-orange-600">Peak</div>
                               <div className="text-xs text-gray-500">at 45min</div>
                             </div>
                           </div>
                         </div>
                         
-                        <div className="bg-amber-100 p-2 rounded border border-amber-200">
-                          <div className="text-xs text-amber-800 font-medium">💡 Insight:</div>
-                          <div className="text-xs text-amber-700">High-carb pasta causes significant glucose spike. Try whole grain pasta or add protein to moderate the response.</div>
+                        <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-3 rounded-lg border border-amber-200">
+                          <div className="flex items-start gap-2">
+                            <div className="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <span className="text-white text-xs">💡</span>
+                            </div>
+                            <div>
+                              <div className="text-xs text-amber-800 font-medium mb-1">AI Insight:</div>
+                              <div className="text-xs text-amber-700">High-carb pasta causes significant glucose spike. Try whole grain pasta or add protein to moderate the response.</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
