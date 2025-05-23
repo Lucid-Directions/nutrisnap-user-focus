@@ -45,10 +45,10 @@ const Hero = () => {
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-600 to-green-400 opacity-30 blur"></div>
               <div className="relative bg-white p-2 rounded-xl shadow-xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=600&q=80" 
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&h=800&q=80" 
                   alt="Healthy Food Analysis" 
-                  className="rounded-lg w-full max-w-md mx-auto"
-                  style={{ aspectRatio: '9/16' }}
+                  className="rounded-lg w-full max-w-md mx-auto object-cover"
+                  style={{ aspectRatio: '3/4', width: '300px', height: '400px' }}
                 />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-600/90 rounded-full p-8">
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">

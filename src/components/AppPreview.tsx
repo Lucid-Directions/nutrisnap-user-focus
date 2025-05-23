@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -19,7 +18,7 @@ const AppPreview = () => {
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-green-50 to-green-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&h=600&q=80" 
                   alt="Food Photography Interface" 
                   className="w-full h-full object-cover"
                 />
@@ -36,7 +35,7 @@ const AppPreview = () => {
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=600&q=80" 
                   alt="Health Data Visualization" 
                   className="w-full h-full object-cover"
                 />
@@ -56,7 +55,7 @@ const AppPreview = () => {
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&h=600&q=80" 
                   alt="Educational Resources" 
                   className="w-full h-full object-cover"
                 />
@@ -76,9 +75,10 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=800&q=80" 
                   alt="NutriSnap Mobile App Analytics" 
-                  className="rounded-2xl shadow-sm w-full"
+                  className="rounded-2xl shadow-sm w-full object-cover"
+                  style={{ aspectRatio: '9/16' }}
                 />
               </div>
             </div>
@@ -135,9 +135,10 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" 
+                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&h=800&q=80" 
                   alt="Educational Content Interface" 
-                  className="rounded-2xl shadow-sm w-full"
+                  className="rounded-2xl shadow-sm w-full object-cover"
+                  style={{ aspectRatio: '9/16' }}
                 />
               </div>
             </div>
@@ -194,9 +195,10 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" 
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&h=800&q=80" 
                   alt="Food Analysis Interface" 
-                  className="rounded-2xl shadow-sm w-full"
+                  className="rounded-2xl shadow-sm w-full object-cover"
+                  style={{ aspectRatio: '9/16' }}
                 />
               </div>
             </div>
