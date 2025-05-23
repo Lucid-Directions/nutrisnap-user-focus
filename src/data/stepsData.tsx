@@ -1,11 +1,13 @@
 
 import { Camera, BarChart2, BookOpen, Lightbulb } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+import React from "react";
 
 export interface Step {
   id: number;
   title: string;
   description: string;
-  icon: React.ComponentType;
+  icon: LucideIcon | React.ComponentType<{ className?: string }>;
   tabTitle: string;
 }
 
