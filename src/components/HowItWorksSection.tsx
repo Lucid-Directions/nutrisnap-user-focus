@@ -89,7 +89,7 @@ const HowItWorksSection = () => {
                             {step.title}
                           </div>
                         </div>
-                      </TabsArea>
+                      </ScrollArea>
                     </TabsContent>
                   );
                 })}
