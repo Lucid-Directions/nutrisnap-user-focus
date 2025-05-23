@@ -44,9 +44,9 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-600 to-green-400 opacity-30 blur"></div>
               <div className="relative bg-white p-2 rounded-xl shadow-xl">
-                <div className="w-full h-full overflow-hidden rounded-lg" style={{ maxWidth: "300px", height: "400px" }}>
+                <div className="w-full h-full overflow-hidden rounded-lg" style={{ width: "400px", height: "500px" }}>
                   <img 
-                    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&h=800&q=80" 
+                    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&h=1000&q=80" 
                     alt="Healthy Food Analysis" 
                     className="w-full h-full object-cover rounded-lg"
                   />
