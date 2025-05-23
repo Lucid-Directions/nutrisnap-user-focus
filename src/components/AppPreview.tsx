@@ -17,10 +17,10 @@ const AppPreview = () => {
           {/* Preview 1: Snap or Upload */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-green-50 to-green-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/lovable-uploads/4f0c4f65-dd82-45e5-915a-0707359cf3a2.png" 
-                  alt="Snap or Upload Interface" 
+                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=800&q=80" 
+                  alt="Food Photography Interface" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -34,10 +34,10 @@ const AppPreview = () => {
           {/* Preview 2: Glucose Impact */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/lovable-uploads/07c7c519-e705-4d61-b90a-827cc47ba096.png" 
-                  alt="Glucose Prediction" 
+                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80" 
+                  alt="Health Data Visualization" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -54,10 +54,10 @@ const AppPreview = () => {
           {/* Preview 3: Learn & Improve */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/lovable-uploads/a802eefd-4a25-43ce-b599-fbb5dc91f502.png" 
-                  alt="Knowledge Base" 
+                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" 
+                  alt="Educational Resources" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -76,8 +76,8 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="/lovable-uploads/95b17c0d-0375-4138-bb11-3f1f4b6630da.png" 
-                  alt="NutriSnap Mobile App Preview" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                  alt="NutriSnap Mobile App Analytics" 
                   className="rounded-2xl shadow-sm w-full"
                 />
               </div>
@@ -135,8 +135,8 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="/lovable-uploads/0a42d05e-1022-42ba-9b48-db6a9975dde4.png" 
-                  alt="NutriSnap Knowledge Base" 
+                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" 
+                  alt="Educational Content Interface" 
                   className="rounded-2xl shadow-sm w-full"
                 />
               </div>
@@ -194,8 +194,8 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="/lovable-uploads/ac1accbf-c7bb-4bd6-9cbb-8b31ef4dde23.png" 
-                  alt="NutriSnap Meal Analysis" 
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" 
+                  alt="Food Analysis Interface" 
                   className="rounded-2xl shadow-sm w-full"
                 />
               </div>
