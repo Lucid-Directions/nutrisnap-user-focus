@@ -63,15 +63,15 @@ const HowItWorksSection = () => {
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-grid-slate-100 opacity-50"></div>
-            <AspectRatio ratio={9/16} className="w-64 max-w-full relative z-10">
-              <div className="w-full h-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
+            <div className="w-64 max-w-full relative z-10">
+              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-16 flex items-center justify-center">
                       <span className="text-white font-semibold text-lg">Camera</span>
                     </div>
-                    <div className="flex-1 bg-black relative flex items-center justify-center">
+                    <div className="bg-black relative h-96 flex items-center justify-center">
                       <div className="absolute inset-4 border-2 border-white/30 rounded-lg"></div>
                       <Camera className="w-16 h-16 text-white/70" />
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
@@ -87,21 +87,21 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
               </div>
-            </AspectRatio>
+            </div>
           </div>
         );
       case "2":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-emerald-50 to-green-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <AspectRatio ratio={9/16} className="w-64 max-w-full relative z-10">
-              <div className="w-full h-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
+            <div className="w-64 max-w-full relative z-10">
+              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-emerald-500 to-green-500 h-16 flex items-center justify-center">
                       <span className="text-white font-semibold text-lg">Analysis</span>
                     </div>
-                    <div className="flex-1 bg-white p-4 overflow-y-auto">
+                    <div className="flex-1 bg-white p-4 overflow-y-auto h-96">
                       <div className="space-y-3">
                         <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
                           <div className="text-sm font-semibold text-emerald-800">Chicken Salad</div>
@@ -127,21 +127,21 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
               </div>
-            </AspectRatio>
+            </div>
           </div>
         );
       case "3":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <AspectRatio ratio={9/16} className="w-64 max-w-full relative z-10">
-              <div className="w-full h-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
+            <div className="w-64 max-w-full relative z-10">
+              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-16 flex items-center justify-center">
                       <span className="text-white font-semibold text-lg">Glucose Impact</span>
                     </div>
-                    <div className="flex-1 bg-white p-4">
+                    <div className="flex-1 bg-white p-4 h-96">
                       <div className="space-y-3">
                         <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                           <CustomGlucoseChart />
@@ -164,21 +164,21 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
               </div>
-            </AspectRatio>
+            </div>
           </div>
         );
       case "4":
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <AspectRatio ratio={9/16} className="w-64 max-w-full relative z-10">
-              <div className="w-full h-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
+            <div className="w-64 max-w-full relative z-10">
+              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative">
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-purple-500 to-violet-500 h-16 flex items-center justify-center">
                       <span className="text-white font-semibold text-lg">Knowledge Hub</span>
                     </div>
-                    <div className="flex-1 bg-white p-4 overflow-y-auto">
+                    <div className="flex-1 bg-white p-4 overflow-y-auto h-96">
                       <div className="space-y-3">
                         <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
                           <div className="text-sm font-semibold text-purple-800">Understanding Glucose</div>
@@ -200,7 +200,7 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
               </div>
-            </AspectRatio>
+            </div>
           </div>
         );
       default:
