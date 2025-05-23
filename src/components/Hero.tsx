@@ -45,8 +45,8 @@ const Hero = () => {
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-green-600 to-green-400 opacity-30 blur"></div>
               <div className="relative bg-white p-2 rounded-xl shadow-xl">
                 <img 
-                  src="/placeholder.svg" 
-                  alt="NutriSnap App Demo" 
+                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=600&q=80" 
+                  alt="Healthy Food Analysis" 
                   className="rounded-lg w-full max-w-md mx-auto"
                   style={{ aspectRatio: '9/16' }}
                 />
