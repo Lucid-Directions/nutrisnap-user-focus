@@ -3,7 +3,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Difference from "@/components/Difference";
-import HowItWorks from "@/components/HowItWorks";
+import HowItWorksSection from "@/components/HowItWorksSection";
 import Benefits from "@/components/Benefits";
 import AppPreview from "@/components/AppPreview";
 import EarlyAccess from "@/components/EarlyAccess";
@@ -16,7 +16,7 @@ const Index = () => {
       <Header />
       <Hero />
       <Difference />
-      <HowItWorks />
+      <HowItWorksSection />
       <Benefits />
       <AppPreview />
       <EarlyAccess />
