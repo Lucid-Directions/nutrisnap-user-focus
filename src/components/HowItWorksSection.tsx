@@ -163,17 +163,21 @@ const HowItWorksSection = () => {
                             <span className="font-semibold text-emerald-800">Spaghetti Marinara</span>
                             <span className="text-xs bg-emerald-200 px-2 py-1 rounded">95% confident</span>
                           </div>
-                          <div className="grid grid-cols-3 gap-2 text-xs">
+                          <div className="grid grid-cols-4 gap-2 text-xs">
                             <div className="text-center">
                               <div className="font-bold text-lg text-emerald-600">520</div>
                               <div className="text-gray-600">Calories</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="font-bold text-lg text-orange-600">92g</div>
+                              <div className="text-gray-600">Carbs</div>
                             </div>
                             <div className="text-center">
                               <div className="font-bold text-lg text-blue-600">18g</div>
                               <div className="text-gray-600">Protein</div>
                             </div>
                             <div className="text-center">
-                              <div className="font-bold text-lg text-orange-600">8g</div>
+                              <div className="font-bold text-lg text-green-600">8g</div>
                               <div className="text-gray-600">Fat</div>
                             </div>
                           </div>
@@ -238,6 +242,29 @@ const HowItWorksSection = () => {
                               <div className="font-medium">Potassium</div>
                               <div className="text-yellow-600">385mg (8% DV)</div>
                             </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-2 rounded-lg border border-blue-200">
+                          <div className="text-xs font-semibold text-gray-700 mb-1">Glucose Impact Preview</div>
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="flex items-center">
+                              <div className="w-3 h-3 rounded-full bg-red-500 mr-1"></div>
+                              <div className="text-xs text-gray-600">Peak: 165 mg/dL</div>
+                            </div>
+                            <div className="text-xs text-amber-600 font-medium">High Impact</div>
+                          </div>
+                          <div className="h-8 bg-white rounded border relative overflow-hidden">
+                            <svg viewBox="0 0 100 24" className="w-full h-full">
+                              <polyline
+                                points="5,20 15,18 25,14 35,9 45,6 55,11 65,15 75,17 85,19 95,20"
+                                fill="none"
+                                stroke="#ef4444"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                              />
+                              <circle cx="45" cy="6" r="1.5" fill="#ef4444" />
+                            </svg>
                           </div>
                         </div>
                       </div>
