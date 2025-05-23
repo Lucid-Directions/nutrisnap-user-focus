@@ -120,7 +120,7 @@ const HowItWorksSection = () => {
                     <div className="flex-1 relative bg-gray-900 flex items-center justify-center">
                       <div className="absolute inset-4 rounded-lg overflow-hidden">
                         <img 
-                          src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?auto=format&fit=crop&w=400&h=600&q=80"
+                          src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=400&h=600&q=80"
                           alt="Spaghetti marinara meal"
                           className="w-full h-full object-cover"
                         />
