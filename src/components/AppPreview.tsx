@@ -1,10 +1,8 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import MetabolicResponseStep from "@/components/step-visuals/MetabolicResponseStep";
 
 const AppPreview = () => {
-  console.log("AppPreview component rendering");
-  
   return (
     <section id="app-preview" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -33,13 +31,13 @@ const AppPreview = () => {
             </div>
           </Card>
           
-          {/* Preview 2: Glucose Impact - RESTORED TO STATIC IMAGE */}
+          {/* Preview 2: Glucose Impact - PREMIUM FEATURE WITH GLUCOSE-RELATED IMAGE */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=600&q=80" 
-                  alt="Glucose Prediction Interface" 
+                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Glucose Monitoring and Health Analytics" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -72,14 +70,17 @@ const AppPreview = () => {
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 mt-16">
-          {/* Mobile App Preview - REPLACED WITH METABOLIC RESPONSE COMPONENT */}
+          {/* Mobile App Preview - METABOLIC RESPONSE VISUALIZATION */}
           <div className="md:w-1/2">
             <div className="relative">
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
-                <div className="rounded-2xl shadow-sm w-full overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                  <MetabolicResponseStep />
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=600&h=800&q=80" 
+                  alt="Health Data Analytics and Metabolic Response Charts" 
+                  className="rounded-2xl shadow-sm w-full object-cover"
+                  style={{ aspectRatio: '9/16' }}
+                />
               </div>
             </div>
           </div>
