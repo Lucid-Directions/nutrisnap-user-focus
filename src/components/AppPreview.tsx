@@ -33,11 +33,11 @@ const AppPreview = () => {
           {/* Preview 2: Glucose Impact - PREMIUM FEATURE WITH GLUCOSE-RELATED IMAGE */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-80 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=600&q=80" 
-                  alt="Glucose Monitoring and Health Analytics" 
-                  className="w-full h-full object-cover object-center"
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Blood Glucose Meter and Health Monitoring" 
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex items-center mb-2">
@@ -75,8 +75,8 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&h=800&q=80" 
-                  alt="Health Data Analytics and Metabolic Response Charts" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=800&q=80" 
+                  alt="Health Data Charts and Metabolic Analytics Dashboard" 
                   className="rounded-2xl shadow-sm w-full object-cover"
                   style={{ aspectRatio: '9/16' }}
                 />
