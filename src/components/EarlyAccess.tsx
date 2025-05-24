@@ -1,16 +1,36 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "@/components/ui/sonner";
 import emailjs from '@emailjs/browser';
 
 const EarlyAccess = () => {
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    interests: ""
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim()) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -19,10 +39,16 @@ const EarlyAccess = () => {
         process.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
         process.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         {
-          user_email: email,
+          user_name: formData.name,
+          user_email: formData.email,
+          user_interests: formData.interests,
           to_email: 'support@nutrisnap.co.uk',
           subject: 'New Waiting List Signup - NutriSnap',
-          message: `A new user has joined the NutriSnap waiting list: ${email}`
+          message: `New user joined the NutriSnap waiting list:
+          
+Name: ${formData.name}
+Email: ${formData.email}
+Interests/Goals: ${formData.interests || 'Not specified'}`
         },
         process.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
       );
@@ -30,7 +56,12 @@ const EarlyAccess = () => {
       toast.success("You've been added to our waiting list!", {
         description: "Thank you for your interest in NutriSnap! We'll notify you when we launch.",
       });
-      setEmail("");
+      
+      setFormData({
+        name: "",
+        email: "",
+        interests: ""
+      });
     } catch (error) {
       console.error('EmailJS error:', error);
       toast.error("Something went wrong. Please try again.", {
@@ -83,29 +114,57 @@ const EarlyAccess = () => {
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Join the NutriSnap Waiting List</label>
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <Input 
-                      type="email" 
-                      id="email" 
-                      placeholder="Your email address" 
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required 
-                      className="flex-1"
-                    />
-                    <Button 
-                      type="submit" 
-                      className="bg-green-600 hover:bg-green-700 text-white"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Reserving..." : "Reserve My Spot"}
-                    </Button>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-2">
-                    We respect your privacy. Your email will only be used to notify you about NutriSnap's launch and occasional updates. No spam, ever.
-                  </p>
+                  <Label htmlFor="name" className="text-sm font-medium">Full Name *</Label>
+                  <Input 
+                    type="text" 
+                    id="name" 
+                    name="name"
+                    placeholder="Your full name" 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required 
+                    className="w-full"
+                  />
                 </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium">Email Address *</Label>
+                  <Input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    placeholder="Your email address" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required 
+                    className="w-full"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="interests" className="text-sm font-medium">Health Goals or Interests (Optional)</Label>
+                  <Textarea 
+                    id="interests" 
+                    name="interests"
+                    placeholder="Tell us about your nutrition goals or what interests you most about NutriSnap..."
+                    value={formData.interests}
+                    onChange={handleInputChange}
+                    className="w-full"
+                    rows={3}
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Reserving Your Spot..." : "Reserve My Spot"}
+                </Button>
+                
+                <p className="text-xs text-gray-500 mt-2">
+                  We respect your privacy. Your information will only be used to notify you about NutriSnap's launch and occasional updates. No spam, ever.
+                </p>
               </form>
             </div>
             
