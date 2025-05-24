@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -15,15 +16,15 @@ const EarlyAccess = () => {
     try {
       // Send email to support using EmailJS
       await emailjs.send(
-        'YOUR_SERVICE_ID', // You'll need to replace this
-        'YOUR_TEMPLATE_ID', // You'll need to replace this
+        process.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+        process.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         {
           user_email: email,
           to_email: 'support@nutrisnap.co.uk',
           subject: 'New Waiting List Signup - NutriSnap',
           message: `A new user has joined the NutriSnap waiting list: ${email}`
         },
-        'YOUR_PUBLIC_KEY' // You'll need to replace this
+        process.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
       );
 
       toast.success("You've been added to our waiting list!", {
