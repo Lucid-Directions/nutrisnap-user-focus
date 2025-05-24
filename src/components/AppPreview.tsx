@@ -37,7 +37,6 @@ const AppPreview = () => {
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
               <div className="h-64 rounded-lg mb-6 overflow-hidden">
-                {console.log("About to render MetabolicResponseStep")}
                 <MetabolicResponseStep />
               </div>
               <div className="flex items-center mb-2">
