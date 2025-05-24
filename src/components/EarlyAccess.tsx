@@ -56,6 +56,7 @@ const EarlyAccess = () => {
       console.log('EmailJS initialized successfully');
 
       const templateParams = {
+        email: formData.email, // This matches {{email}} in your template
         user_name: formData.name,
         user_email: formData.email,
         user_interests: formData.interests || 'Not specified',
