@@ -60,6 +60,21 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## EmailJS Configuration
+
+The "Reserve My Spot" form uses [EmailJS](https://www.emailjs.com/) to deliver
+sign‑up emails. Before deploying the site you must provide your own EmailJS
+credentials. Copy `.env.example` to `.env` (or `.env.local`) and fill in the
+following values from the EmailJS dashboard:
+
+```
+VITE_EMAILJS_SERVICE_ID=<your service id>
+VITE_EMAILJS_TEMPLATE_ID=<your template id>
+VITE_EMAILJS_PUBLIC_KEY=<your public key>
+```
+
+Without these values the form submission will fail.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/821e445f-8cdb-4935-b71a-3e3abaf8da0c) and click on Share -> Publish.
