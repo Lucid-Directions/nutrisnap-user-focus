@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import MetabolicResponseStep from "@/components/step-visuals/MetabolicResponseStep";
 
 const AppPreview = () => {
   return (
@@ -30,15 +31,11 @@ const AppPreview = () => {
             </div>
           </Card>
           
-          {/* Preview 2: Glucose Impact */}
+          {/* Preview 2: Glucose Impact - REPLACED WITH ACTUAL VISUALIZATION */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=600&q=80" 
-                  alt="Health Data Visualization" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="h-64 rounded-lg mb-6 overflow-hidden">
+                <MetabolicResponseStep />
               </div>
               <div className="flex items-center mb-2">
                 <h3 className="text-xl font-semibold">Glucose Prediction</h3>
