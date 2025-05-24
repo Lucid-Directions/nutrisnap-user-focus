@@ -1,25 +1,43 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "@/components/ui/sonner";
+import emailjs from '@emailjs/browser';
 
 const EarlyAccess = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Send email to support using EmailJS
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // You'll need to replace this
+        'YOUR_TEMPLATE_ID', // You'll need to replace this
+        {
+          user_email: email,
+          to_email: 'support@nutrisnap.co.uk',
+          subject: 'New Waiting List Signup - NutriSnap',
+          message: `A new user has joined the NutriSnap waiting list: ${email}`
+        },
+        'YOUR_PUBLIC_KEY' // You'll need to replace this
+      );
+
       toast.success("You've been added to our waiting list!", {
         description: "Thank you for your interest in NutriSnap! We'll notify you when we launch.",
       });
       setEmail("");
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error("Something went wrong. Please try again.", {
+        description: "We couldn't add you to the waiting list right now.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
