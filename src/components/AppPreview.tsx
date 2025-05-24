@@ -35,7 +35,7 @@ const AppPreview = () => {
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=600&q=80" 
+                  src="/lovable-uploads/bef9084a-517c-4ae5-a437-ee59bcc8d316.png" 
                   alt="Glucose Prediction Analytics Chart" 
                   className="w-full h-full object-cover"
                 />
