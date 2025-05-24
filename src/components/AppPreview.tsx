@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -75,8 +76,8 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=800&q=80" 
-                  alt="Health Data Charts and Metabolic Analytics Dashboard" 
+                  src="/lovable-uploads/cb36e07d-eca0-478c-81d3-b2d30496b0c1.png" 
+                  alt="Metabolic Health Analytics Dashboard" 
                   className="rounded-2xl shadow-sm w-full object-cover"
                   style={{ aspectRatio: '9/16' }}
                 />
