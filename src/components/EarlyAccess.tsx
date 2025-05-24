@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -36,25 +37,36 @@ const EarlyAccess = () => {
 
     setIsSubmitting(true);
     
+    console.log('EmailJS Configuration:');
+    console.log('Service ID:', serviceID);
+    console.log('Template ID:', templateID);
+    console.log('Private Key:', privateKey ? 'Present' : 'Missing');
+    
     try {
-      // Send email to support using EmailJS
-      await emailjs.send(
-        serviceID,
-        templateID,
-        {
-          user_name: formData.name,
-          user_email: formData.email,
-          user_interests: formData.interests,
-          to_email: 'support@nutrisnap.co.uk',
-          subject: 'New Waiting List Signup - NutriSnap',
-          message: `New user joined the NutriSnap waiting list:
+      const templateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        user_interests: formData.interests,
+        to_email: 'support@nutrisnap.co.uk',
+        subject: 'New Waiting List Signup - NutriSnap',
+        message: `New user joined the NutriSnap waiting list:
 
 Name: ${formData.name}
 Email: ${formData.email}
 Interests/Goals: ${formData.interests || 'Not specified'}`
-        },
+      };
+
+      console.log('Template params:', templateParams);
+
+      // Send email to support using EmailJS
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        templateParams,
         privateKey
       );
+
+      console.log('EmailJS success:', result);
 
       toast.success("You've been added to our waiting list!", {
         description: "Thank you for your interest in NutriSnap! We'll notify you when we launch.",
@@ -66,10 +78,22 @@ Interests/Goals: ${formData.interests || 'Not specified'}`
         interests: ""
       });
     } catch (error) {
-      console.error('EmailJS error:', error);
-      toast.error("Something went wrong. Please try again.", {
-        description: "We couldn't add you to the waiting list right now.",
-      });
+      console.error('EmailJS error details:', error);
+      
+      // More specific error handling
+      if (error.status === 404) {
+        toast.error("Configuration Error", {
+          description: "The email service is not properly configured. Please contact support at support@nutrisnap.co.uk",
+        });
+      } else if (error.status === 400) {
+        toast.error("Invalid Request", {
+          description: "There was an issue with the form data. Please try again.",
+        });
+      } else {
+        toast.error("Something went wrong. Please try again.", {
+          description: "We couldn't add you to the waiting list right now. You can also email us directly at support@nutrisnap.co.uk",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
