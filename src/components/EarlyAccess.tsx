@@ -6,6 +6,10 @@ import { useState } from "react";
 import { toast } from "@/components/ui/sonner";
 import emailjs from '@emailjs/browser';
 
+const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
 const EarlyAccess = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -34,9 +38,12 @@ const EarlyAccess = () => {
     
     try {
       // Send email to support using EmailJS
+      if (!serviceID || !templateID || !publicKey) {
+        throw new Error('EmailJS environment variables are not configured');
+      }
       await emailjs.send(
-        'service_eevw5u9',
-        'template_qr1sn96',
+        serviceID,
+        templateID,
         {
           user_name: formData.name,
           user_email: formData.email,
@@ -44,12 +51,12 @@ const EarlyAccess = () => {
           to_email: 'support@nutrisnap.co.uk',
           subject: 'New Waiting List Signup - NutriSnap',
           message: `New user joined the NutriSnap waiting list:
-          
+
 Name: ${formData.name}
 Email: ${formData.email}
 Interests/Goals: ${formData.interests || 'Not specified'}`
         },
-        'qjJx1GpD9Y5RfZAR1'
+        publicKey
       );
 
       toast.success("You've been added to our waiting list!", {
