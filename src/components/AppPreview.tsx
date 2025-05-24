@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -36,8 +35,8 @@ const AppPreview = () => {
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/lovable-uploads/bef9084a-517c-4ae5-a437-ee59bcc8d316.png" 
-                  alt="Glucose Prediction Analytics Chart" 
+                  src="/lovable-uploads/9835f5f7-58f4-4f01-941f-4ce8dc63f8ac.png" 
+                  alt="Glucose Impact Prediction Chart" 
                   className="w-full h-full object-cover"
                 />
               </div>
