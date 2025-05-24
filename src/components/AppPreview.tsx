@@ -30,13 +30,13 @@ const AppPreview = () => {
             </div>
           </Card>
           
-          {/* Preview 2: Glucose Impact - PREMIUM FEATURE WITH GLUCOSE-RELATED IMAGE */}
+          {/* Preview 2: Glucose Impact - PREMIUM FEATURE WITH GLUCOSE PREDICTION CHART */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
               <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=800&h=600&q=80" 
-                  alt="Blood Glucose Meter and Health Monitoring" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Glucose Prediction Analytics Chart" 
                   className="w-full h-full object-cover"
                 />
               </div>
