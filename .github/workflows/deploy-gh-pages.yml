@@ -40,6 +40,9 @@ jobs:
       - name: Build project 🛠️
         run: npm run build # This runs 'vite build' and creates the 'dist' folder
 
+      - name: Copy CNAME
+        run: cp CNAME dist/CNAME
+
       - name: Setup Pages 🛠️
         uses: actions/configure-pages@v5
 
