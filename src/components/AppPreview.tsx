@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -38,7 +39,7 @@ const AppPreview = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=600&q=80" 
                   alt="Glucose Monitoring and Health Analytics" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
               <div className="flex items-center mb-2">
@@ -76,7 +77,7 @@ const AppPreview = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=600&h=800&q=80" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=800&q=80" 
                   alt="Health Data Analytics and Metabolic Response Charts" 
                   className="rounded-2xl shadow-sm w-full object-cover"
                   style={{ aspectRatio: '9/16' }}
@@ -260,3 +261,4 @@ const AppPreview = () => {
 };
 
 export default AppPreview;
+
