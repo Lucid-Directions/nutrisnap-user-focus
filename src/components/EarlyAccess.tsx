@@ -6,9 +6,9 @@ import { useState } from "react";
 import { toast } from "@/components/ui/sonner";
 import emailjs from '@emailjs/browser';
 
-const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
-const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+const serviceID = "service_180vsqb";
+const templateID = "template_anjy1d7";
+const publicKey = "X3v9Qe3THksPlPgbJ";
 
 const EarlyAccess = () => {
   const [formData, setFormData] = useState({
@@ -38,9 +38,6 @@ const EarlyAccess = () => {
     
     try {
       // Send email to support using EmailJS
-      if (!serviceID || !templateID || !publicKey) {
-        throw new Error('EmailJS environment variables are not configured');
-      }
       await emailjs.send(
         serviceID,
         templateID,
