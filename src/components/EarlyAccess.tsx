@@ -9,7 +9,7 @@ import emailjs from '@emailjs/browser';
 
 const serviceID = "service_180vsqb";
 const templateID = "template_anjy1d7";
-const privateKey = "JG691j2ThWcvAOUleM8m0";
+const publicKey = "X3v9Qe3THksPlPgbJ";
 
 const EarlyAccess = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const EarlyAccess = () => {
     console.log('EmailJS Configuration:');
     console.log('Service ID:', serviceID);
     console.log('Template ID:', templateID);
-    console.log('Private Key:', privateKey ? 'Present' : 'Missing');
+    console.log('Public Key:', publicKey ? 'Present' : 'Missing');
     
     try {
       const templateParams = {
@@ -58,12 +58,14 @@ Interests/Goals: ${formData.interests || 'Not specified'}`
 
       console.log('Template params:', templateParams);
 
-      // Send email to support using EmailJS
+      // Initialize EmailJS with public key
+      emailjs.init(publicKey);
+
+      // Send email using the correct method
       const result = await emailjs.send(
         serviceID,
         templateID,
-        templateParams,
-        privateKey
+        templateParams
       );
 
       console.log('EmailJS success:', result);
@@ -77,7 +79,7 @@ Interests/Goals: ${formData.interests || 'Not specified'}`
         email: "",
         interests: ""
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('EmailJS error details:', error);
       
       // More specific error handling
