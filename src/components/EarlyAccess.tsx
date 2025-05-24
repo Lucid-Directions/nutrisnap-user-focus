@@ -8,7 +8,7 @@ import emailjs from '@emailjs/browser';
 
 const serviceID = "service_180vsqb";
 const templateID = "template_anjy1d7";
-const publicKey = "X3v9Qe3THksPlPgbJ";
+const privateKey = "JG691j2ThWcvAOUleM8m0";
 
 const EarlyAccess = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ Name: ${formData.name}
 Email: ${formData.email}
 Interests/Goals: ${formData.interests || 'Not specified'}`
         },
-        publicKey
+        privateKey
       );
 
       toast.success("You've been added to our waiting list!", {
