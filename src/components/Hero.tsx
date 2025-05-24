@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -51,11 +50,6 @@ const Hero = () => {
                     alt="Healthy Food Analysis" 
                     className="w-full h-full object-cover rounded-lg"
                   />
-                </div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-600/90 rounded-full p-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
                 </div>
               </div>
             </div>
