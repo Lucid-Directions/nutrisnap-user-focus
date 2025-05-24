@@ -21,7 +21,9 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # Use the latest Ubuntu runner
-
+    environment:           # <<< THIS IS THE BLOCK WE ADDED/ARE ADDING
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} 
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4 # Action to check out your repository content
