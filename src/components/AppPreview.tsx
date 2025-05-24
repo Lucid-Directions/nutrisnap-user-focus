@@ -33,11 +33,15 @@ const AppPreview = () => {
             </div>
           </Card>
           
-          {/* Preview 2: Glucose Impact - REPLACED WITH ACTUAL VISUALIZATION */}
+          {/* Preview 2: Glucose Impact - RESTORED TO STATIC IMAGE */}
           <Card className="overflow-hidden border-0 shadow-lg rounded-xl">
             <div className="bg-white p-6 pt-0">
-              <div className="h-64 rounded-lg mb-6 overflow-hidden">
-                <MetabolicResponseStep />
+              <div className="h-64 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Glucose Prediction Interface" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex items-center mb-2">
                 <h3 className="text-xl font-semibold">Glucose Prediction</h3>
@@ -68,17 +72,14 @@ const AppPreview = () => {
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 mt-16">
-          {/* Mobile App Preview */}
+          {/* Mobile App Preview - REPLACED WITH METABOLIC RESPONSE COMPONENT */}
           <div className="md:w-1/2">
             <div className="relative">
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-600 to-green-400 opacity-20 blur"></div>
               <div className="relative bg-white p-4 rounded-3xl shadow-xl max-w-sm mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=800&q=80" 
-                  alt="NutriSnap Mobile App Analytics" 
-                  className="rounded-2xl shadow-sm w-full object-cover"
-                  style={{ aspectRatio: '9/16' }}
-                />
+                <div className="rounded-2xl shadow-sm w-full overflow-hidden" style={{ aspectRatio: '9/16' }}>
+                  <MetabolicResponseStep />
+                </div>
               </div>
             </div>
           </div>
