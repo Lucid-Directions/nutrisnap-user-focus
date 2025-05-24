@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,18 +36,31 @@ const EarlyAccess = () => {
 
     setIsSubmitting(true);
     
-    console.log('EmailJS Configuration:');
+    console.log('=== EmailJS Debug Information ===');
     console.log('Service ID:', serviceID);
     console.log('Template ID:', templateID);
-    console.log('Public Key:', publicKey ? 'Present' : 'Missing');
+    console.log('Public Key:', publicKey);
+    console.log('EmailJS version:', emailjs);
     
     try {
+      // Initialize EmailJS first
+      console.log('Initializing EmailJS...');
+      emailjs.init({
+        publicKey: publicKey,
+        blockHeadless: true,
+        limitRate: {
+          id: 'app',
+          throttle: 10000,
+        },
+      });
+      console.log('EmailJS initialized successfully');
+
       const templateParams = {
         user_name: formData.name,
         user_email: formData.email,
-        user_interests: formData.interests,
-        to_email: 'support@nutrisnap.co.uk',
-        subject: 'New Waiting List Signup - NutriSnap',
+        user_interests: formData.interests || 'Not specified',
+        to_name: 'NutriSnap Team',
+        from_name: formData.name,
         message: `New user joined the NutriSnap waiting list:
 
 Name: ${formData.name}
@@ -57,45 +69,59 @@ Interests/Goals: ${formData.interests || 'Not specified'}`
       };
 
       console.log('Template params:', templateParams);
+      console.log('Attempting to send email...');
 
-      // Initialize EmailJS with public key
-      emailjs.init(publicKey);
-
-      // Send email using the correct method
+      // Send email using EmailJS
       const result = await emailjs.send(
         serviceID,
         templateID,
         templateParams
       );
 
-      console.log('EmailJS success:', result);
+      console.log('EmailJS success response:', result);
 
-      toast.success("You've been added to our waiting list!", {
-        description: "Thank you for your interest in NutriSnap! We'll notify you when we launch.",
-      });
-      
-      setFormData({
-        name: "",
-        email: "",
-        interests: ""
-      });
-    } catch (error: any) {
-      console.error('EmailJS error details:', error);
-      
-      // More specific error handling
-      if (error.status === 404) {
-        toast.error("Configuration Error", {
-          description: "The email service is not properly configured. Please contact support at support@nutrisnap.co.uk",
+      if (result.status === 200) {
+        toast.success("You've been added to our waiting list!", {
+          description: "Thank you for your interest in NutriSnap! We'll notify you when we launch.",
         });
-      } else if (error.status === 400) {
-        toast.error("Invalid Request", {
-          description: "There was an issue with the form data. Please try again.",
+        
+        setFormData({
+          name: "",
+          email: "",
+          interests: ""
         });
       } else {
-        toast.error("Something went wrong. Please try again.", {
-          description: "We couldn't add you to the waiting list right now. You can also email us directly at support@nutrisnap.co.uk",
-        });
+        throw new Error(`Unexpected status: ${result.status}`);
       }
+    } catch (error: any) {
+      console.error('=== EmailJS Error Details ===');
+      console.error('Error object:', error);
+      console.error('Error status:', error.status);
+      console.error('Error text:', error.text);
+      console.error('Error message:', error.message);
+      console.error('Full error:', JSON.stringify(error, null, 2));
+      
+      // More specific error handling based on the actual error
+      let errorTitle = "Something went wrong";
+      let errorDescription = "Please try again or contact us directly at support@nutrisnap.co.uk";
+      
+      if (error.status === 404) {
+        errorTitle = "Service Configuration Error";
+        errorDescription = "The email service configuration is not found. Please contact support.";
+      } else if (error.status === 400) {
+        errorTitle = "Invalid Request";
+        errorDescription = "There was an issue with the form data. Please check your input and try again.";
+      } else if (error.status === 422) {
+        errorTitle = "Template Error";
+        errorDescription = "There's an issue with the email template. Please contact support.";
+      } else if (error.text && error.text.includes("Account not found")) {
+        errorTitle = "Account Configuration Error";
+        errorDescription = "The EmailJS account configuration is incorrect. Please contact support.";
+      }
+      
+      toast.error(errorTitle, {
+        description: errorDescription,
+      });
     } finally {
       setIsSubmitting(false);
     }
