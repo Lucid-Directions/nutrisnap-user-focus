@@ -5,6 +5,13 @@ import { useState } from "react";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -12,7 +19,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/949b72b4-14b9-49b5-b561-f617cf276e83.png" 
             alt="NutriSnap Logo" 
-            className="h-20 w-auto" // Changed from h-16 to h-20
+            className="h-20 w-auto"
           />
         </div>
 
@@ -22,7 +29,10 @@ const Header = () => {
           <a href="#how-it-works" className="text-gray-700 hover:text-green-600 transition-colors">How It Works</a>
           <a href="#benefits" className="text-gray-700 hover:text-green-600 transition-colors">Benefits</a>
           <a href="#faq" className="text-gray-700 hover:text-green-600 transition-colors">FAQ</a>
-          <Button className="bg-green-600 hover:bg-green-700">
+          <Button 
+            className="bg-green-600 hover:bg-green-700"
+            onClick={() => scrollToSection("early-access")}
+          >
             Join Waiting List
           </Button>
         </nav>
@@ -83,7 +93,13 @@ const Header = () => {
             >
               FAQ
             </a>
-            <Button className="bg-green-600 hover:bg-green-700 w-full">
+            <Button 
+              className="bg-green-600 hover:bg-green-700 w-full"
+              onClick={() => {
+                scrollToSection("early-access");
+                setIsMenuOpen(false);
+              }}
+            >
               Join Waiting List
             </Button>
           </div>

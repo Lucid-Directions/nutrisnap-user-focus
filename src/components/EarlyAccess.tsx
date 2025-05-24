@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -36,8 +35,8 @@ const EarlyAccess = () => {
     try {
       // Send email to support using EmailJS
       await emailjs.send(
-        process.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        process.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        'service_eevw5u9',
+        'template_qr1sn96',
         {
           user_name: formData.name,
           user_email: formData.email,
@@ -50,7 +49,7 @@ Name: ${formData.name}
 Email: ${formData.email}
 Interests/Goals: ${formData.interests || 'Not specified'}`
         },
-        process.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+        'qjJx1GpD9Y5RfZAR1'
       );
 
       toast.success("You've been added to our waiting list!", {
@@ -73,7 +72,7 @@ Interests/Goals: ${formData.interests || 'Not specified'}`
   };
 
   return (
-    <section className="py-20 bg-green-50">
+    <section id="early-access" className="py-20 bg-green-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
           <div className="md:flex">

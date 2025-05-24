@@ -27,6 +27,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="bg-green-600 hover:bg-green-700 text-white"
+                onClick={() => scrollToSection("early-access")}
               >
                 Join the Waiting List
               </Button>
