@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useIsMobile } from "@{/hooks/use-mobile}";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +8,7 @@ import { Camera, BarChart2, Lightbulb, BookOpen } from "lucide-react";
 const HowItWorksSection = () => {
   const [activeStep, setActiveStep] = useState("1");
   const [glucoseDotPosition, setGlucoseDotPosition] = useState(45);
+  const isMobile = useIsMobile();
 
   const steps = [
     {
@@ -107,10 +109,10 @@ const HowItWorksSection = () => {
     switch (stepId) {
       case "1":
         return (
-          <div className="relative w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-72 max-w-full relative z-10">
-              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
+          <div className="relative w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl sm:rounded-3xl p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+            <div className="w-full max-w-[280px] sm:max-w-xs relative z-10">
+              <div className="w-full bg-black rounded-[2rem] sm:rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-16 flex items-center justify-center">
@@ -146,10 +148,10 @@ const HowItWorksSection = () => {
         );
       case "2":
         return (
-          <div className="relative w-full h-full bg-gradient-to-br from-emerald-50 to-green-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-72 max-w-full relative z-10">
-              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
+          <div className="relative w-full h-full bg-gradient-to-br from-emerald-50 to-green-100 rounded-xl sm:rounded-3xl p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+            <div className="w-full max-w-[280px] sm:max-w-xs relative z-10">
+              <div className="w-full bg-black rounded-[2rem] sm:rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-emerald-500 to-green-500 h-16 flex items-center justify-center">
@@ -280,10 +282,10 @@ const HowItWorksSection = () => {
         const glucoseStatus = getGlucoseStatus(currentGlucose);
         
         return (
-          <div className="relative w-full h-full bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-72 max-w-full relative z-10">
-              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
+          <div className="relative w-full h-full bg-gradient-to-br from-amber-50 to-orange-100 rounded-xl sm:rounded-3xl p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+            <div className="w-full max-w-[280px] sm:max-w-xs relative z-10">
+              <div className="w-full bg-black rounded-[2rem] sm:rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-blue-600 to-indigo-600 h-16 flex items-center justify-between px-4">
@@ -429,10 +431,10 @@ const HowItWorksSection = () => {
         );
       case "4":
         return (
-          <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-8 flex items-center justify-center overflow-hidden">
-            <div className="w-72 max-w-full relative z-10">
-              <div className="w-full bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full bg-white rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
+          <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl sm:rounded-3xl p-4 sm:p-6 flex items-center justify-center overflow-hidden">
+            <div className="w-full max-w-[280px] sm:max-w-xs relative z-10">
+              <div className="w-full bg-black rounded-[2rem] sm:rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full bg-white rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
                   <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black rounded-full"></div>
                   <div className="h-full flex flex-col pt-10">
                     <div className="bg-gradient-to-r from-purple-500 to-violet-500 h-16 flex items-center justify-between px-4">
@@ -548,115 +550,156 @@ const HowItWorksSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left side - Interactive step cards */}
-          <div className="lg:col-span-5 space-y-4">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              const isActive = activeStep === step.id;
-              
-              return (
-                <motion.div
-                  key={step.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+        {isMobile ? (
+          <Tabs value={activeStep} onValueChange={setActiveStep} className="w-full">
+            <TabsList className="grid w-full grid-cols-2 gap-2 mb-6 bg-slate-100 p-1 rounded-lg">
+              {steps.map((step) => (
+                <TabsTrigger 
+                  key={step.id} 
+                  value={step.id} 
+                  className="py-3 text-sm rounded-md flex-1 items-center justify-center data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-slate-700 text-slate-500"
                 >
-                  <Card 
-                    className={`transition-all duration-300 cursor-pointer hover:shadow-xl hover:-translate-y-1 border-2 ${
-                      isActive 
-                        ? `${step.activeColor} shadow-xl transform -translate-y-1 scale-[1.02]` 
-                        : `${step.borderColor} hover:${step.borderColor} shadow-md`
-                    }`}
-                    onClick={() => setActiveStep(step.id)}
+                  {step.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            {steps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <TabsContent key={step.id} value={step.id} className="mt-0 focus-visible:outline-none focus-visible:ring-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-xl shadow-lg p-4 sm:p-6 border border-slate-200"
                   >
-                    <CardContent className="p-6">
-                      <div className="flex gap-4">
-                        <div className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${step.color} shadow-lg transform transition-transform duration-300 ${isActive ? 'scale-110' : 'scale-100'}`}>
-                          <Icon className="w-7 h-7 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
-                              isActive ? 'bg-gradient-to-r ' + step.color + ' text-white' : 'bg-gray-200 text-gray-600'
-                            }`}>
-                              {step.id}
-                            </span>
-                            <h3 className={`text-xl font-bold transition-colors duration-300 ${
-                              isActive ? 'text-slate-800' : 'text-slate-700'
-                            }`}>
-                              {step.title}
-                            </h3>
-                          </div>
-                          <p className={`text-sm font-medium mb-2 ${
-                            isActive ? 'text-slate-600' : 'text-slate-500'
-                          }`}>
-                            {step.subtitle}
-                          </p>
-                          <p className={`text-sm leading-relaxed transition-colors duration-300 ${
-                            isActive ? 'text-slate-600' : 'text-slate-500'
-                          }`}>
-                            {step.description}
-                          </p>
-                        </div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-r ${step.color}`}>
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                      <h3 className="text-md sm:text-lg font-semibold text-slate-800">{step.id}. {step.title}</h3>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4 leading-relaxed">{step.description}</p>
+                    <div className="h-auto aspect-[9/16] max-h-[500px] sm:max-h-[550px] w-full overflow-hidden rounded-lg border mx-auto max-w-xs sm:max-w-sm">
+                      {renderStepContent(step.id)}
+                    </div>
+                  </motion.div>
+                </TabsContent>
               );
             })}
-          </div>
-
-          {/* Right side - Visual content */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7"
-          >
-            <div className="sticky top-24">
-              <Tabs value={activeStep} onValueChange={setActiveStep} className="w-full">
-                <TabsList className="w-full grid grid-cols-4 mb-8 bg-white/80 backdrop-blur-sm shadow-lg border border-slate-200/50">
-                  {steps.map((step) => {
-                    const Icon = step.icon;
-                    return (
-                      <TabsTrigger 
-                        key={step.id}
-                        value={step.id}
-                        className="flex flex-col items-center gap-2 py-4 data-[state=active]:text-slate-800 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300"
-                      >
-                        <Icon className="h-5 w-5" />
-                        <span className="text-xs font-medium">{step.title}</span>
-                      </TabsTrigger>
-                    );
-                  })}
-                </TabsList>
-
-                <div className="bg-white rounded-3xl shadow-2xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
-                  <AnimatePresence mode="wait">
-                    {steps.map((step) => (
-                      <TabsContent 
-                        key={step.id} 
-                        value={step.id} 
-                        className="mt-0 focus-visible:outline-none focus-visible:ring-0"
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                          transition={{ duration: 0.4 }}
-                          className="h-[600px] w-full"
-                        >
-                          {renderStepContent(step.id)}
-                        </motion.div>
-                      </TabsContent>
-                    ))}
-                  </AnimatePresence>
-                </div>
-              </Tabs>
+          </Tabs>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Left side - Interactive step cards */}
+            <div className="lg:col-span-5 space-y-4">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                const isActive = activeStep === step.id;
+                
+                return (
+                  <motion.div
+                    key={step.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Card 
+                      className={`transition-all duration-300 cursor-pointer hover:shadow-xl hover:-translate-y-1 border-2 ${
+                        isActive 
+                          ? `${step.activeColor} shadow-xl transform -translate-y-1 scale-[1.02]` 
+                          : `${step.borderColor} hover:${step.borderColor} shadow-md`
+                      }`}
+                      onClick={() => setActiveStep(step.id)}
+                    >
+                      <CardContent className="p-6">
+                        <div className="flex gap-4">
+                          <div className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${step.color} shadow-lg transform transition-transform duration-300 ${isActive ? 'scale-110' : 'scale-100'}`}>
+                            <Icon className="w-7 h-7 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                                isActive ? 'bg-gradient-to-r ' + step.color + ' text-white' : 'bg-gray-200 text-gray-600'
+                              }`}>
+                                {step.id}
+                              </span>
+                              <h3 className={`text-xl font-bold transition-colors duration-300 ${
+                                isActive ? 'text-slate-800' : 'text-slate-700'
+                              }`}>
+                                {step.title}
+                              </h3>
+                            </div>
+                            <p className={`text-sm font-medium mb-2 ${
+                              isActive ? 'text-slate-600' : 'text-slate-500'
+                            }`}>
+                              {step.subtitle}
+                            </p>
+                            <p className={`text-sm leading-relaxed transition-colors duration-300 ${
+                              isActive ? 'text-slate-600' : 'text-slate-500'
+                            }`}>
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
-          </motion.div>
-        </div>
+
+            {/* Right side - Visual content */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-7"
+            >
+              <div className="sticky top-24">
+                <Tabs value={activeStep} onValueChange={setActiveStep} className="w-full">
+                  <TabsList className="w-full grid grid-cols-4 mb-8 bg-white/80 backdrop-blur-sm shadow-lg border border-slate-200/50">
+                    {steps.map((step) => {
+                      const Icon = step.icon;
+                      return (
+                        <TabsTrigger 
+                          key={step.id}
+                          value={step.id}
+                          className="flex flex-col items-center gap-2 py-4 data-[state=active]:text-slate-800 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all duration-300"
+                        >
+                          <Icon className="h-5 w-5" />
+                          <span className="text-xs font-medium">{step.title}</span>
+                        </TabsTrigger>
+                      );
+                    })}
+                  </TabsList>
+
+                  <div className="bg-white rounded-3xl shadow-2xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
+                    <AnimatePresence mode="wait">
+                      {steps.map((step) => (
+                        <TabsContent 
+                          key={step.id} 
+                          value={step.id} 
+                          className="mt-0 focus-visible:outline-none focus-visible:ring-0"
+                        >
+                          <motion.div
+                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                            transition={{ duration: 0.4 }}
+                            className="h-[600px] w-full"
+                          >
+                            {renderStepContent(step.id)}
+                          </motion.div>
+                        </TabsContent>
+                      ))}
+                    </AnimatePresence>
+                  </div>
+                </Tabs>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     </section>
   );
