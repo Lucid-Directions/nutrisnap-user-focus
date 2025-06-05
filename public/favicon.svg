@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Simplified apple shape - much bolder -->
+  <path d="M16 4c-8 0-12 6-12 14 0 10 4 14 12 14s12-4 12-14c0-8-4-14-12-14z" fill="#4CAF50"/>
+  
+  <!-- Simple leaf -->
+  <path d="M18 4c2-3 6-2 6 1-2-1-4-1-6 1z" fill="#2E7D32"/>
+  
+  <!-- Large camera icon for visibility -->
+  <circle cx="16" cy="18" r="8" fill="white"/>
+  <circle cx="16" cy="18" r="6" fill="none" stroke="#2E7D32" stroke-width="2"/>
+  <circle cx="16" cy="18" r="3" fill="#2E7D32"/>
+  
+  <!-- Camera body indicator -->
+  <rect x="11" y="12" width="10" height="2" rx="1" fill="white"/>
+</svg> 

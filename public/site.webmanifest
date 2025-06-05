@@ -1,0 +1,16 @@
+{
+  "name": "NutriSnap",
+  "short_name": "NutriSnap",
+  "description": "Revolutionizing Metabolic Health with AI-powered nutrition analysis",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#7CB342",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+} 

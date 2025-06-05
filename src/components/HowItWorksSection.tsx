@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useIsMobile } from "@{/hooks/use-mobile}";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
@@ -277,7 +277,7 @@ const HowItWorksSection = () => {
             </div>
           </div>
         );
-      case "3":
+      case "3": {
         const currentGlucose = Math.round(getGlucoseValue(glucoseDotPosition));
         const glucoseStatus = getGlucoseStatus(currentGlucose);
         
@@ -429,7 +429,8 @@ const HowItWorksSection = () => {
             </div>
           </div>
         );
-      case "4":
+      }
+      case "4": {
         return (
           <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl sm:rounded-3xl p-4 sm:p-6 flex items-center justify-center overflow-hidden">
             <div className="w-full max-w-[280px] sm:max-w-xs relative z-10">
@@ -523,6 +524,7 @@ const HowItWorksSection = () => {
             </div>
           </div>
         );
+      }
       default:
         return null;
     }
