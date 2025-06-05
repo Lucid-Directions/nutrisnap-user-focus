@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="mb-6 md:mb-0">
             <img 
-              src="/lovable-uploads/949b72b4-14b9-49b5-b561-f617cf276e83.png" 
+              src="/lovable-uploads/nutrisnaplogo.png" 
               alt="NutriSnap Logo" 
               className="h-12 w-auto" // Changed from h-10 to h-12 for consistency
             />

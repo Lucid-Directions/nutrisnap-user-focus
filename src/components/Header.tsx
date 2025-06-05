@@ -17,7 +17,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img 
-            src="/lovable-uploads/949b72b4-14b9-49b5-b561-f617cf276e83.png" 
+            src="/lovable-uploads/nutrisnaplogo.png" 
             alt="NutriSnap Logo" 
             className="h-20 w-auto"
           />
